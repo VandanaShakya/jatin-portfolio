@@ -1,0 +1,95 @@
+/* Button styles */
+button.continuous-border {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  z-index: 0;
+}
+
+/* Animated gradient border */
+button.continuous-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background: linear-gradient(90deg, #f7f2f5, #6a696b, #c9d8f5, #ffffff);
+  background-size: 400% 400%;
+  border-radius: 0.25rem;
+  z-index: -1;
+  animation: gradientBorder 4s ease infinite;
+}
+
+/* Optional glow inside effect */
+button.continuous-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  border-radius: 0.25rem;
+  filter: blur(6px);
+  opacity: 0.6;
+  z-index: -2;
+  animation: gradientBorder 4s ease infinite;
+}
+
+/* Gradient movement */
+@keyframes gradientBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Keep text above the effect */
+button.continuous-border span {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* button about *//* Arrow bump animation */
+@keyframes arrowBump {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+.arrow-icon {
+  display: inline-block;
+  animation: arrowBump 1s ease-in-out infinite;
+  transition: stroke 0.3s;
+}
+
+
+.animate-border {
+  border: 2px solid;
+  animation: borderGradient 4s linear infinite;
+  transition: border-color 0.3s;
+}
+
+/* Hover effect: only on hover */
+button.group {
+  background-color: black;
+  color: white;
+}
+
+
+.arrow-icon:hover {
+  stroke: white;
+}
+.arrow-icon{
+  stroke: white;
+}
+button.group:hover,
+button.group:active
+{
+  background-color: white;
+  color: black;
+  stroke: black;
+}
