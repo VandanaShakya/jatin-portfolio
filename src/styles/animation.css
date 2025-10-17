@@ -62,10 +62,14 @@ button.continuous-border span {
 
 .arrow-icon {
   display: inline-block;
+  stroke: white;
   animation: arrowBump 1s ease-in-out infinite;
-  transition: stroke 0.3s;
+  transition: stroke 0.3s ease;
 }
 
+.group:hover .arrow-icon {
+  stroke: black;
+}
 
 .animate-border {
   border: 2px solid;
@@ -73,23 +77,15 @@ button.continuous-border span {
   transition: border-color 0.3s;
 }
 
-/* Hover effect: only on hover */
+/* Button base & hover states */
 button.group {
   background-color: black;
   color: white;
+  transition: all 0.3s ease;
 }
 
-
-.arrow-icon:hover {
-  stroke: white;
-}
-.arrow-icon{
-  stroke: white;
-}
 button.group:hover,
-button.group:active
-{
+button.group:active {
   background-color: white;
   color: black;
-  stroke: black;
 }

@@ -539,13 +539,13 @@ const HomePage = () => {
                   {service.tag}
                 </span>
                 <a
-                  href="#"
+                  href={service.link || "#"}
                   className="text-lg sm:text-xl font-bold mt-3 hover:text-gray-700 transition-colors duration-300 block"
                 >
                   {service.title}
                 </a>
                 <a
-                  href="#"
+                  href={service.link || "#"}
                   className="flex items-center text-sm uppercase font-semibold mt-1 hover:text-black transition-colors duration-300"
                 >
                   Learn More <ArrowRight size={16} className="ml-2" />

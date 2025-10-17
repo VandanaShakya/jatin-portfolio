@@ -139,39 +139,44 @@ export const services = [
     id: 1,
     title: 'Full-Stack Web Development',
     tag: 'MAIN SERVICE',
-    imagePlaceholder: images.webdev
+    imagePlaceholder: images.webdev,
+    link: 'https://www.fnamarketingsolutions.com/services/website-development',
   },
   {
     id: 2,
     title: 'Frontend Development',
     tag: 'WEB DEVELOPMENT',
-    imagePlaceholder: images.frontend
+    imagePlaceholder: images.frontend,
+    link: 'https://www.fnamarketingsolutions.com/services/frontend-development',
   },
   {
-  id: 3,
-  title: 'Backend Development',
-  tag: 'SPECIALTY',
-  imagePlaceholder: images.backend
-},
-{
+    id: 3,
+    title: 'Backend Development',
+    tag: 'SPECIALTY',
+    imagePlaceholder: images.backend,
+    link: 'https://www.fnamarketingsolutions.com/services/backend-development',
+  },
+  {
     id: 4,
     title: 'Website Hosting & Maintenance',
     tag: 'WEB SERVICE',
-    imagePlaceholder: images.webhosting
+    imagePlaceholder: images.webhosting,
+    link: 'https://www.fnamarketingsolutions.com/services/web-hosting',
   },
   {
     id: 5,
     title: 'SEO & Digital Marketing',
     tag: 'MARKETING',
-    imagePlaceholder: images.seo
+    imagePlaceholder: images.seo,
+    link: 'https://www.fnamarketingsolutions.com/services/seo-digital-marketing',
   },
   {
     id: 6,
     title: 'Email Marketing Campaigns',
     tag: 'MARKETING',
-    imagePlaceholder: images.email
+    imagePlaceholder: images.email,
+    link: 'https://www.fnamarketingsolutions.com/services/email-marketing',
   },
-  
 ];
 
 
