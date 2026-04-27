@@ -183,7 +183,7 @@ const Form = () => {
       </svg>
     </div>
     <p className="text-sm font-medium uppercase tracking-wider text-[#c9c9c9] mb-1">EMAIL</p>
-    <p className="text-sm text-[#c9c9c9]">support@example.com</p>
+    <p className="text-sm text-[#c9c9c9]">info@fnamarketingsolutions.com</p>
   </div>
 
   <div className="flex flex-col items-start w-full sm:w-1/3">
@@ -193,7 +193,7 @@ const Form = () => {
       </svg>
     </div>
     <p className="text-sm font-medium uppercase tracking-wider text-[#c9c9c9] mb-1">PHONE</p>
-    <p className="text-sm text-[#c9c9c9]">+61 383 767 284</p>
+    <p className="text-sm text-[#c9c9c9]">8847370741</p>
   </div>
 </div>
 
