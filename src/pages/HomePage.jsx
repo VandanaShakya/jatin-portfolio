@@ -399,38 +399,48 @@ const HomePage = () => {
         <motion.div
           variants={staggerContainer}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 
-             w-full max-w-5xl mx-auto px-4 sm:px-0 m-10"
+             w-full max-w-6xl mx-auto px-4 sm:px-0 m-10"
         >
-          {filteredProjects.map((project) => (
-            <motion.div
-              key={project.id}
-              variants={fadeInUp}
-              className="group relative overflow-hidden rounded-lg border border-gray-100 
-                 shadow-sm hover:shadow-lg transition-all duration-300"
-            >
-              <img
-                src={project.imageSrc}
-                alt={project.title}
-                className="w-full h-64 sm:h-72 lg:h-80 object-cover 
-                   transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 
-                      transition-all duration-300"></div>
-              <div className="absolute inset-0 flex flex-col justify-center items-center 
-                      p-4 text-center opacity-0 group-hover:opacity-100 
-                      transition-opacity duration-300">
-                <h4 className="text-white text-lg sm:text-xl font-semibold mb-2">
-                  {project.title}
-                </h4>
-                <p className="text-gray-200 text-sm">{project.description}</p>
-                <a
-                  href={project.link || "#"}
-                  className="mt-2 inline-flex items-center text-sm text-white hover:text-indigo-300"
-                >
-                  Learn More <ArrowRight size={16} className="ml-1" />
-                </a>
-              </div>
-            </motion.div>
+          {filteredProjects.map((project) => (  
+           <motion.div
+           key={project.id}
+           variants={fadeInUp}
+           /* Added touch-action and group-focus to ensure mobile users can trigger the state with a tap */
+           className="group relative overflow-hidden rounded-lg border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 focus:outline-none"
+           tabIndex="0"
+         >
+           {/* Image: Adjusted aspect ratio to be wider (16:8 is ultra-wide) */}
+           <img
+             src={project.imageSrc}
+             alt={project.title}
+             className="w-full aspect-[16/9] md:aspect-[16/8] object-cover transition-transform duration-500 group-hover:scale-110"
+           />
+           
+           {/* Overlay: Increased opacity on mobile for readability */}
+           <div className="absolute inset-0 bg-black/40 md:bg-black/30 md:group-hover:bg-black/60 transition-all duration-300"></div>
+           
+           {/* Text Content: 
+               1. Visible by default on mobile (opacity-100)
+               2. Hidden by default on desktop (md:opacity-0)
+               3. Shown on desktop hover (md:group-hover:opacity-100)
+           */}
+           <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center 
+                           opacity-100 md:opacity-0 md:group-hover:opacity-100 
+                           transition-all duration-300 px-6">
+             <h4 className="text-white text-lg sm:text-xl font-semibold mb-2">
+               {project.title}
+             </h4>
+             <p className="text-gray-200 text-sm mb-3 line-clamp-3">
+               {project.description}
+             </p>
+             <a
+               href={project.link || "#"}
+               className="inline-flex items-center text-sm text-white font-medium border-b border-white/40 pb-1 hover:text-teal-300 hover:border-teal-300 transition-colors"
+             >
+               Learn More <ArrowRight size={16} className="ml-1" />
+             </a>
+           </div>
+         </motion.div>
           ))}
         </motion.div>
 

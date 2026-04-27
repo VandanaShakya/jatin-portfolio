@@ -6,82 +6,81 @@ export const projects = [
   // Web Designing
   {
     id: 1,
-    title: "Creative Portfolio Design",
-    description: "A modern, responsive portfolio layout for creatives.",
-    imageSrc: images.project1,
+    title: "Law Firm Website",
+    description: "Professional legal services website with clean UI, service sections, and contact integration.",
+    imageSrc: images.lawfirm,
     category: "Web Designing",
-    link: "#"
+    link: "https://lawfirm-sand-six.vercel.app"
   },
   {
     id: 2,
-    title: "Landing Page UI",
-    description: "A sleek landing page design for a startup.",
-    imageSrc: images.project2,
+    title: "The Big Business Co",
+    description: "Corporate business website with premium layout, branding sections, and service highlights.",
+    imageSrc: images.bigbusiness,
     category: "Web Designing",
-    link: "#"
+    link: "https://www.thebigbusinessco.com.au"
   },
   {
     id: 3,
-    title: "E-commerce Storefront",
-    description: "Responsive web design for an online store.",
-    imageSrc:images.project3,
+    title: "School Website",
+    description: "Modern school website with academic sections, admissions info, and responsive design.",
+    imageSrc: images.kidsschool,
     category: "Web Designing",
-    link: "#"
+    link: "https://school-website-two-psi.vercel.app"
   },
 
   // Web Dev
   {
     id: 4,
-    title: "React Dashboard",
-    description: "Dynamic admin dashboard built with React and Tailwind.",
-    imageSrc: images.project4,
+    title: "KloudShark Website",
+    description: "Business website with modern UI, service showcase, and responsive frontend development.",
+    imageSrc: images.kloudshark,
     category: "Web Dev",
-    link: "#"
+    link: "https://www.kloudshark.com"
   },
   {
     id: 5,
-    title: "Node.js API Backend",
-    description: "RESTful API with Node.js and Express for a SaaS app.",
-    imageSrc: images.project5,
+    title: "Fundraiser Platform",
+    description: "Crowdfunding platform with donation flow, campaign pages, and user interaction.",
+    imageSrc: images.fundraiser,
     category: "Web Dev",
-    link: "#"
+    link: "https://fund-raiser-jw2v.vercel.app"
   },
   {
     id: 6,
-    title: "Full-Stack Blog App",
-    description: "MERN stack project with authentication and CRUD.",
-    imageSrc: images.project6,
+    title: "Worker Community App",
+    description: "Community platform with user interaction, posts, and social features built on MERN stack.",
+    imageSrc: images.commun,
     category: "Web Dev",
-    link: "#"
+    link: "https://worker-community.vercel.app"
   },
 
   // Misc / Other Projects
   {
     id: 7,
-    title: "Branding Website",
-    description: "Landing page for a branding agency with animations.",
-    imageSrc: images.project7,
+    title: "Real Estate Website",
+    description: "Property listing website with modern UI, featured listings, and responsive design.",
+    imageSrc: images.realestate,
     category: "Web Designing",
-    link: "#"
+    link: "https://real-estate-neon-alpha.vercel.app"
   },
   {
     id: 8,
-    title: "Portfolio CMS",
-    description: "Custom CMS for a personal portfolio website.",
-    imageSrc: images.project8,
+    title: "Fundzz Platform",
+    description: "Financial platform website with clean UI, service flow, and user-focused design.",
+    imageSrc: images.fundzz,
     category: "Web Dev",
-    link: "#"
+    link: "https://fundzz.com"
   },
   {
     id: 9,
-    title: "Startup One Page",
-    description: "One-page website design for a tech startup.",
-    imageSrc: images.project9,
+    title: "Travel Website",
+    description: "One-page travel website with destination highlights and modern responsive layout.",
+    imageSrc: images.travel,
     category: "Web Designing",
-    link: "#"
+    link: "https://travel-ten-sandy.vercel.app"
   }
 ];
-
 
 export const categories = ['All', 'Webdesign', 'Development', 'Photography'];
 

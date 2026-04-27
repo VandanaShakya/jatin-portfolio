@@ -27,6 +27,19 @@ import seo from './home/seo.jpg'
 import email from './home/email.jpg'
 
 
+// projects //
+import bigbusiness from './projects/bigbusiness.png'
+import commun from './projects/commun.png'
+import travel from './projects/travel.png'
+import fundraiser from './projects/fundraiser.png'
+import fundzz from './projects/fundzz.png'
+import kidsschool from './projects/kidsschool.png'
+import kloudshark from './projects/kloudshark.png'
+import lawfirm from './projects/lawfirm.png'
+import realestate from './projects/realestate.png'
+
+
+
 // footer //
 import footerBack from './home/footerback.jpg'
 
@@ -58,5 +71,19 @@ const images = {
     seo,
     email,
     footerBack,
+
+
+    // projects//
+    bigbusiness,
+    commun,
+    travel,
+    fundraiser,
+    fundzz,
+    kidsschool,
+    kloudshark,
+    lawfirm,
+    realestate,
+
+
 }
 export default images;
