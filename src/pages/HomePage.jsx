@@ -264,9 +264,9 @@ const HomePage = () => {
                   From planning and database architecture to responsive front-end development, I deliver digital solutions that are
                   both functional and visually compelling. Let’s craft an exceptional web experience together.
                 </p>
-                <button className="mt-6 px-8 py-3 bg-black text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-gray-800 transition duration-300">
+                {/* <button className="mt-6 px-8 py-3 bg-black text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-gray-800 transition duration-300">
                   View Resume
-                </button>
+                </button> */}
               </motion.div>
             </div>
           </motion.section>
@@ -291,7 +291,7 @@ const HomePage = () => {
                   transform ideas into digital experiences. I blend modern design with
                   clean, scalable code to deliver projects that truly stand out.
                 </p>
-            <button className="mt-8 px-6 py-3 relative w-40 font-medium rounded-full shadow-sm overflow-hidden flex items-center bg-black justify-center border-2 border-gray-900 text-gray-900 transition-colors duration-300 group">
+            {/* <button className="mt-8 px-6 py-3 relative w-40 font-medium rounded-full shadow-sm overflow-hidden flex items-center bg-black justify-center border-2 border-gray-900 text-gray-900 transition-colors duration-300 group">
   <span className="flex items-center space-x-2 relative z-10">
     <span>View Portfolio</span>
     <svg
@@ -306,9 +306,8 @@ const HomePage = () => {
     </svg>
   </span>
 
-  {/* Animated border */}
-  <span className="absolute inset-0 rounded-full border-2 border-gray-900 pointer-events-none animate-border"></span>
-</button>
+   <span className="absolute inset-0 rounded-full border-2 border-gray-900 pointer-events-none animate-border"></span>
+</button> */}
 
 
               </div>

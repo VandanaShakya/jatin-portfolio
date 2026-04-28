@@ -1,10 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react'; // Added useState
+import emailjs from '@emailjs/browser'; // Import EmailJS
 import images from '../assets/images';
 import '../styles/animation.css'; 
 
-
 const Form = () => {
-  // Use useRef to access the DOM elements (input values) directly
+  const [isSending, setIsSending] = useState(false);
+  
+  // Use useRef to access the DOM elements
+  const formRef = useRef(); // Added a ref for the form itself
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const subjectRef = useRef(null);
@@ -13,39 +16,39 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSending(true);
 
-    const formData = {
-      name: nameRef.current.value,
-      email: emailRef.current.value,
-      subject: subjectRef.current.value,
-      service: serviceRef.current.value,
-      message: messageRef.current.value,
-    };
+    // Replace these with your actual EmailJS credentials
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    console.log('Strict Uncontrolled Form Data:', formData);
-
-    if (!formData.name || !formData.email) {
-      alert('Please fill in all required fields (Name and Email).');
-      return;
-    }
-
-    alert('Form submission simulated. Check console for data.');
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      .then((result) => {
+          console.log('SUCCESS!', result.text);
+          alert('Message sent successfully!');
+          formRef.current.reset(); // Clears the form
+          // console.log(SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY);
+      }, (error) => {
+          console.log('FAILED...', error.text);
+          alert('Failed to send message. Please try again.');
+      })
+      .finally(() => {
+          setIsSending(false);
+      });
   };
 
   return (
     <div className="relative min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-      {/* --- Background Image Block --- */}
-   <div>
-     <img
-  src={images.footerBack}
-  alt="Background"
-  className="absolute inset-0 w-full h-full object-cover"
-/>
-   </div>
+      <div>
+        <img
+          src={images.footerBack}
+          alt="Background"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
 
-      {/* --- Form Content --- */}
       <div className="relative z-1 max-w-4xl mx-auto">
-        {/* Title Section */}
         <div className="text-center mb-12">
           <p className="text-sm tracking-widest text-[#cecccc] uppercase mb-2">CONTACTS</p>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-[#919191] leading-tight">
@@ -53,8 +56,8 @@ const Form = () => {
           </h1>
         </div>
 
-        {/* Form Section */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Added formRef here */}
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
@@ -62,12 +65,12 @@ const Form = () => {
               </label>
               <input
                 type="text"
-                name="name"
+                name="name" // Ensure these names match your EmailJS template variables
                 id="name"
                 ref={nameRef}
                 required
                 placeholder="Enter your name"
-                className="w-full px-4 py-3 border text-white border-gray-300 rounded-md focus:ring-black focus:border-black transition duration-150 ease-in-out placeholder-gray-400"
+                className="w-full px-4 py-3 border text-white border-gray-300 rounded-md focus:ring-black focus:border-black transition duration-150 ease-in-out placeholder-gray-400 bg-transparent"
               />
             </div>
             <div>
@@ -81,7 +84,7 @@ const Form = () => {
                 ref={emailRef}
                 required
                 placeholder="Enter your email"
-                className="w-full px-4 py-3 border text-white border-gray-300 rounded-md focus:ring-black focus:border-black transition duration-150 ease-in-out placeholder-gray-400"
+                className="w-full px-4 py-3 border text-white border-gray-300 rounded-md focus:ring-black focus:border-black transition duration-150 ease-in-out placeholder-gray-400 bg-transparent"
               />
             </div>
           </div>
@@ -97,7 +100,7 @@ const Form = () => {
                 id="subject"
                 ref={subjectRef}
                 placeholder="Subject"
-                className="w-full px-4 py-3 border text-white border-gray-300 rounded-md focus:ring-black focus:border-black transition duration-150 ease-in-out placeholder-gray-400"
+                className="w-full px-4 py-3 border text-white border-gray-300 rounded-md focus:ring-black focus:border-black transition duration-150 ease-in-out placeholder-gray-400 bg-transparent"
               />
             </div>
             <div>
@@ -106,17 +109,19 @@ const Form = () => {
               </label>
               <div className="relative">
                 <select
-                  name="service"
-                  id="service"
+                  name="services"
+                  id="services"
                   ref={serviceRef}
                   defaultValue="Web Design"
-                  className="w-full appearance-none px-4 py-3 border border-gray-300 rounded-md focus:ring-black focus:border-black transition duration-150 ease-in-out bg-white pr-10"
+                  className="w-full appearance-none px-4 py-3 border border-gray-300 rounded-md focus:ring-black focus:border-black transition duration-150 ease-in-out pr-10"
                 >
-                  <option value="Web Design">Web Design</option>
-                  <option value="Graphic Design">Graphic Design</option>
-                  <option value="SEO">SEO</option>
-                  <option value="Content Writing">Content Writing</option>
-                  <option value="Other">Other</option>
+                  <option value="Select Service">Select Service</option>
+                  <option value="Website Development">Website & web application development</option>
+                  <option value="Frontend">Frontend development </option>
+                  <option value="Backend">Backend development</option>
+                  <option value="SEO">SEO & Digital Marketing Services</option>
+                  <option value="Email Marketing">Email marketing</option>
+                  <option value="Web">Web </option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -137,7 +142,7 @@ const Form = () => {
               rows="6"
               ref={messageRef}
               placeholder="Enter your message"
-              className="w-full px-4 py-3 border text-white border-gray-300 rounded-md focus:ring-black focus:border-black transition duration-150 ease-in-out placeholder-gray-400 resize-none"
+              className="w-full px-4 py-3 border text-white border-gray-300 rounded-md focus:ring-black focus:border-black transition duration-150 ease-in-out placeholder-gray-400 resize-none bg-transparent"
             ></textarea>
           </div>
 
@@ -150,53 +155,45 @@ const Form = () => {
                 <a href="#" className="underline hover:text-gray-700">Privacy Policy</a>
               </p>
             </div>
-        <button
-  type="submit"
-  className="relative w-full sm:w-auto px-12 py-3 text-black font-semibold text-sm tracking-wider uppercase rounded-sm overflow-hidden continuous-border"
->
-  SEND MESSAGE
-</button>
-
-
-
+            <button
+              type="submit"
+              disabled={isSending}
+              className={`relative w-full sm:w-auto px-12 py-3 text-black font-semibold text-sm tracking-wider uppercase rounded-sm overflow-hidden continuous-border ${isSending ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+              {isSending ? 'SENDING...' : 'SEND MESSAGE'}
+            </button>
           </div>
         </form>
 
-        {/* Contact Info Section */}
-      <div className="flex flex-col sm:flex-row justify-between items-start text-left space-y-8 sm:space-y-0 p-6">
-  <div className="flex flex-col items-start w-full sm:w-1/3">
-    <div className="p-3 bg-[#969b98] rounded-full mb-3">
-      <svg className="w-5 h-5 text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
-      </svg>
-    </div>
-    <p className="text-sm font-medium uppercase tracking-wider text-[#c9c9c9] mb-1">ADDRESS</p>
-    <p className="text-sm text-[#c9c9c9]">123 King Street, London W50 10250</p>
-    <p className="text-sm text-[#c9c9c9]">United Kingdom</p>
-  </div>
+        {/* Contact Info Section (Layout preserved) */}
+        <div className="flex flex-col sm:flex-row justify-between items-start text-left space-y-8 sm:space-y-0 p-6 mt-12">
+            {/* Address */}
+            <div className="flex flex-col items-start w-full sm:w-1/3">
+                <div className="p-3 bg-[#969b98] rounded-full mb-3">
+                    <svg className="w-5 h-5 text-gray-900" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path></svg>
+                </div>
+                <p className="text-sm font-medium uppercase tracking-wider text-[#c9c9c9] mb-1">ADDRESS</p>
+                <p className="text-sm text-[#c9c9c9]">First Floor, Sco. 52, Sector 82, JLPL Industrial Area, Punjab 140306</p>
+            </div>
 
-  <div className="flex flex-col items-start w-full sm:w-1/3">
-    <div className="p-3 bg-[#969b98] rounded-full mb-3">
-      <svg className="w-5 h-5 text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-      </svg>
-    </div>
-    <p className="text-sm font-medium uppercase tracking-wider text-[#c9c9c9] mb-1">EMAIL</p>
-    <p className="text-sm text-[#c9c9c9]">info@fnamarketingsolutions.com</p>
-  </div>
+            {/* Email */}
+            <div className="flex flex-col items-start w-full sm:w-1/3">
+                <div className="p-3 bg-[#969b98] rounded-full mb-3">
+                    <svg className="w-5 h-5 text-gray-900" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                </div>
+                <p className="text-sm font-medium uppercase tracking-wider text-[#c9c9c9] mb-1">EMAIL</p>
+                <p className="text-sm text-[#c9c9c9]">info@fnamarketingsolutions.com</p>
+            </div>
 
-  <div className="flex flex-col items-start w-full sm:w-1/3">
-    <div className="p-3 bg-[#969b98] rounded-full mb-3">
-      <svg className="w-5 h-5 text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.744 4.167A1 1 0 018.81 9.07l-2.27 2.27a8.557 8.557 0 006.11 6.11l2.27-2.27a1 1 0 011.117-.11l4.167.744a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-      </svg>
-    </div>
-    <p className="text-sm font-medium uppercase tracking-wider text-[#c9c9c9] mb-1">PHONE</p>
-    <p className="text-sm text-[#c9c9c9]">8847370741</p>
-  </div>
-</div>
-
+            {/* Phone */}
+            <div className="flex flex-col items-start w-full sm:w-1/3">
+                <div className="p-3 bg-[#969b98] rounded-full mb-3">
+                    <svg className="w-5 h-5 text-gray-900" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.744 4.167A1 1 0 018.81 9.07l-2.27 2.27a8.557 8.557 0 006.11 6.11l2.27-2.27a1 1 0 011.117-.11l4.167.744a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                </div>
+                <p className="text-sm font-medium uppercase tracking-wider text-[#c9c9c9] mb-1">PHONE</p>
+                <p className="text-sm text-[#c9c9c9]">8847370741</p>
+            </div>
+        </div>
       </div>
     </div>
   );
