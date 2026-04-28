@@ -49,15 +49,15 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
-    
+
       <div className="bg-white w-full z-0">
-{/* <div className="absolute top-[50%] bg-white right-6 transform -translate-y-1/2 w-96 h-[500px] z-20 pointer-events-auto">
+        {/* <div className="absolute top-[50%] bg-white right-6 transform -translate-y-1/2 w-96 h-[500px] z-20 pointer-events-auto">
   <ProfileCard  className="bg-white"/>
 </div> */}
         {/* Hero Section */}
-       
+
         <div className="min-h-screen p-4 sm:p-8 lg:p-12  text-neutral-900 font-sans mt-50">
-         
+
           <div className="max-w-7xl mx-auto">
 
             {/* --- Header Section --- */}
@@ -182,9 +182,9 @@ const HomePage = () => {
         </div>
 
 
-       <ScrollLeft baseVelocity={-10} text="developer  " className="text-red-500" scrollDependent>
-  Scrolling Text Animation
-</ScrollLeft>
+        <ScrollLeft baseVelocity={-10} text="developer  " className="text-red-500" scrollDependent>
+          Scrolling Text Animation
+        </ScrollLeft>
 
         {/* About Section */}
         <div className="bg-white w-full h-auto">
@@ -264,9 +264,14 @@ const HomePage = () => {
                   From planning and database architecture to responsive front-end development, I deliver digital solutions that are
                   both functional and visually compelling. Let’s craft an exceptional web experience together.
                 </p>
-                {/* <button className="mt-6 px-8 py-3 bg-black text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-gray-800 transition duration-300">
-                  View Resume
-                </button> */}
+                <a
+                  href="./resume.docx"
+                  download="resume.docx"
+                  target="_self"
+                  className="mt-6 px-8 py-3 bg-black text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-gray-800 transition duration-300 inline-block"
+                >
+                  Download Resume
+                </a>
               </motion.div>
             </div>
           </motion.section>
@@ -291,7 +296,7 @@ const HomePage = () => {
                   transform ideas into digital experiences. I blend modern design with
                   clean, scalable code to deliver projects that truly stand out.
                 </p>
-            {/* <button className="mt-8 px-6 py-3 relative w-40 font-medium rounded-full shadow-sm overflow-hidden flex items-center bg-black justify-center border-2 border-gray-900 text-gray-900 transition-colors duration-300 group">
+                {/* <button className="mt-8 px-6 py-3 relative w-40 font-medium rounded-full shadow-sm overflow-hidden flex items-center bg-black justify-center border-2 border-gray-900 text-gray-900 transition-colors duration-300 group">
   <span className="flex items-center space-x-2 relative z-10">
     <span>View Portfolio</span>
     <svg
@@ -400,46 +405,46 @@ const HomePage = () => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 
              w-full max-w-6xl mx-auto px-4 sm:px-0 m-10"
         >
-          {filteredProjects.map((project) => (  
-           <motion.div
-           key={project.id}
-           variants={fadeInUp}
-           /* Added touch-action and group-focus to ensure mobile users can trigger the state with a tap */
-           className="group relative overflow-hidden rounded-lg border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 focus:outline-none"
-           tabIndex="0"
-         >
-           {/* Image: Adjusted aspect ratio to be wider (16:8 is ultra-wide) */}
-           <img
-             src={project.imageSrc}
-             alt={project.title}
-             className="w-full aspect-[16/9] md:aspect-[16/8] object-cover transition-transform duration-500 group-hover:scale-110"
-           />
-           
-           {/* Overlay: Increased opacity on mobile for readability */}
-           <div className="absolute inset-0 bg-black/40 md:bg-black/30 md:group-hover:bg-black/60 transition-all duration-300"></div>
-           
-           {/* Text Content: 
+          {filteredProjects.map((project) => (
+            <motion.div
+              key={project.id}
+              variants={fadeInUp}
+              /* Added touch-action and group-focus to ensure mobile users can trigger the state with a tap */
+              className="group relative overflow-hidden rounded-lg border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 focus:outline-none"
+              tabIndex="0"
+            >
+              {/* Image: Adjusted aspect ratio to be wider (16:8 is ultra-wide) */}
+              <img
+                src={project.imageSrc}
+                alt={project.title}
+                className="w-full aspect-[16/9] md:aspect-[16/8] object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+
+              {/* Overlay: Increased opacity on mobile for readability */}
+              <div className="absolute inset-0 bg-black/40 md:bg-black/30 md:group-hover:bg-black/60 transition-all duration-300"></div>
+
+              {/* Text Content: 
                1. Visible by default on mobile (opacity-100)
                2. Hidden by default on desktop (md:opacity-0)
                3. Shown on desktop hover (md:group-hover:opacity-100)
            */}
-           <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center 
+              <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center 
                            opacity-100 md:opacity-0 md:group-hover:opacity-100 
                            transition-all duration-300 px-6">
-             <h4 className="text-white text-lg sm:text-xl font-semibold mb-2">
-               {project.title}
-             </h4>
-             <p className="text-gray-200 text-sm mb-3 line-clamp-3">
-               {project.description}
-             </p>
-             <a
-               href={project.link || "#"}
-               className="inline-flex items-center text-sm text-white font-medium border-b border-white/40 pb-1 hover:text-teal-300 hover:border-teal-300 transition-colors"
-             >
-               Learn More <ArrowRight size={16} className="ml-1" />
-             </a>
-           </div>
-         </motion.div>
+                <h4 className="text-white text-lg sm:text-xl font-semibold mb-2">
+                  {project.title}
+                </h4>
+                <p className="text-gray-200 text-sm mb-3 line-clamp-3">
+                  {project.description}
+                </p>
+                <a
+                  href={project.link || "#"}
+                  className="inline-flex items-center text-sm text-white font-medium border-b border-white/40 pb-1 hover:text-teal-300 hover:border-teal-300 transition-colors"
+                >
+                  Learn More <ArrowRight size={16} className="ml-1" />
+                </a>
+              </div>
+            </motion.div>
           ))}
         </motion.div>
 
@@ -500,71 +505,71 @@ const HomePage = () => {
         </section>
 
         {/* Services Section */}
-       <section id="services" className="py-16 sm:py-24 bg-white w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 lg:mb-20"
-        >
-          <div className="max-w-xl">
-            <span className="inline-block px-3 py-1 text-xs font-medium uppercase tracking-widest border border-gray-900 mb-4">
-              LATEST SERVICES
-            </span>
-            <h2 className="text-5xl sm:text-6xl font-extrabold text-gray-900 leading-tight">
-              OUR CORE OFFERINGS
-            </h2>
-            <p className="text-lg text-gray-600 mt-4">
-              Where creativity meets purpose. Let's build something extraordinary together.
-            </p>
-          </div>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-          {services.map((service, index) => {
-            let staggerClass = "";
-            if (index === 1) staggerClass = "md:-mt-12";
-            else if (index === 2) staggerClass = "md:-mt-24";
-
-            return (
-              <motion.div
-                key={service.id}
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
-                className={`flex flex-col ${staggerClass}`}
-              >
-                <div className="w-full bg-gray-200 flex items-center justify-center overflow-hidden mb-4 aspect-[4/3]">
-                  <img
-                    src={service.imagePlaceholder}
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-                <span className="text-xs font-semibold uppercase text-gray-500">
-                  {service.tag}
+        <section id="services" className="py-16 sm:py-24 bg-white w-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 lg:mb-20"
+            >
+              <div className="max-w-xl">
+                <span className="inline-block px-3 py-1 text-xs font-medium uppercase tracking-widest border border-gray-900 mb-4">
+                  LATEST SERVICES
                 </span>
-                <a
-                  href={service.link || "#"}
-                  className="text-lg sm:text-xl font-bold mt-3 hover:text-gray-700 transition-colors duration-300 block"
-                >
-                  {service.title}
-                </a>
-                <a
-                  href={service.link || "#"}
-                  className="flex items-center text-sm uppercase font-semibold mt-1 hover:text-black transition-colors duration-300"
-                >
-                  Learn More <ArrowRight size={16} className="ml-2" />
-                </a>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
+                <h2 className="text-5xl sm:text-6xl font-extrabold text-gray-900 leading-tight">
+                  OUR CORE OFFERINGS
+                </h2>
+                <p className="text-lg text-gray-600 mt-4">
+                  Where creativity meets purpose. Let's build something extraordinary together.
+                </p>
+              </div>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+              {services.map((service, index) => {
+                let staggerClass = "";
+                if (index === 1) staggerClass = "md:-mt-12";
+                else if (index === 2) staggerClass = "md:-mt-24";
+
+                return (
+                  <motion.div
+                    key={service.id}
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    className={`flex flex-col ${staggerClass}`}
+                  >
+                    <div className="w-full bg-gray-200 flex items-center justify-center overflow-hidden mb-4 aspect-[4/3]">
+                      <img
+                        src={service.imagePlaceholder}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                    </div>
+                    <span className="text-xs font-semibold uppercase text-gray-500">
+                      {service.tag}
+                    </span>
+                    <a
+                      href={service.link || "#"}
+                      className="text-lg sm:text-xl font-bold mt-3 hover:text-gray-700 transition-colors duration-300 block"
+                    >
+                      {service.title}
+                    </a>
+                    <a
+                      href={service.link || "#"}
+                      className="flex items-center text-sm uppercase font-semibold mt-1 hover:text-black transition-colors duration-300"
+                    >
+                      Learn More <ArrowRight size={16} className="ml-2" />
+                    </a>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
 
         {/* Contact Section */}
         <div id="contact" className="bg-white">
